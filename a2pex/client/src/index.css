@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    background-color: #10b981;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Condensed athletic display type — used for headlines / big numbers */
+  .font-display {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    letter-spacing: 0.02em;
+  }
+
+  /* Diagonal "kit fabric" stripe texture, used sparingly as a signature accent */
+  .kit-stripes {
+    background-image: repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.06) 0px,
+      rgba(255, 255, 255, 0.06) 2px,
+      transparent 2px,
+      transparent 16px
+    );
+  }
+
+  .glass-nav {
+    background-color: rgba(17, 24, 39, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-pitch px-6 py-3
+      font-body text-sm font-semibold uppercase tracking-wide text-ink
+      transition-all duration-200 hover:bg-pitch-hover hover:-translate-y-0.5 hover:shadow-kit-hover
+      active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink bg-transparent px-6 py-3
+      font-body text-sm font-semibold uppercase tracking-wide text-ink
+      transition-all duration-200 hover:bg-ink hover:text-paper
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5
+      font-body text-sm font-semibold uppercase tracking-wide text-paper/90
+      transition-colors duration-200 hover:bg-white/10;
+  }
+
+  .card-surface {
+    @apply rounded-2xl bg-surface text-paper;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-gray-200 bg-white px-4 py-3 font-body text-sm text-ink
+      placeholder:text-gray-400 transition-colors focus:border-pitch focus:outline-none focus:ring-2 focus:ring-pitch/20;
+  }
+
+  .input-field-dark {
+    @apply w-full rounded-xl border border-white/10 bg-surface px-4 py-3 font-body text-sm text-paper
+      placeholder:text-gray-500 transition-colors focus:border-pitch focus:outline-none focus:ring-2 focus:ring-pitch/20;
+  }
+
+  .label-eyebrow {
+    @apply font-mono text-xs uppercase tracking-widest text-pitch;
+  }
+}

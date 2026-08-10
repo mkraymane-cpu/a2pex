@@ -1,0 +1,24 @@
+# Optional convenience file — spins up a MySQL 8 instance with the A2PEX
+# schema already imported. Not required: any local MySQL/MariaDB works too.
+#
+# Usage:
+#   docker compose up -d
+#   then point server/.env at DB_HOST=localhost, DB_PORT=3306,
+#   DB_USER=root, DB_PASSWORD=rootpassword, DB_NAME=a2pex
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: a2pex-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: a2pex
+    ports:
+      - '3306:3306'
+    volumes:
+      - a2pex_mysql_data:/var/lib/mysql
+      - ./server/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+volumes:
+  a2pex_mysql_data:
