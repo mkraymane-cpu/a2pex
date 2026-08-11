@@ -258,7 +258,7 @@ export default function ProductForm({ initialData, onSubmit, submitLabel = 'Save
 
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <div>
-            <label className="mb-1.5 block font-mono text-xs uppercase tracking-widest text-gray-500">Price ($) *</label>
+            <label className="mb-1.5 block font-mono text-xs uppercase tracking-widest text-gray-500">Price (DH) *</label>
             <input required type="number" min="0" step="0.01" value={form.price} onChange={set('price')} className="input-field" placeholder="89.99" />
           </div>
           <div>

@@ -1,8 +1,9 @@
 export function formatPrice(value) {
   const n = Number(value) || 0;
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
+  const formatted = new Intl.NumberFormat('fr-MA', {
+    style: 'decimal',
     minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(n);
+  return `${formatted} DH`;
 }
